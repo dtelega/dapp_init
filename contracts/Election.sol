@@ -7,11 +7,11 @@ contract Election {
         string  name;
         uint    voteCount;
     }
-    
+
     bool electionIsOpen;
     address passportAddress;
     address owner;
-    
+
     // Read/write candidates
     mapping(uint => Candidate) public candidates;
     // Store Candidates Count
@@ -40,9 +40,10 @@ contract Election {
         // require that they haven't voted before
         require(!voters[msg.sender], "Already voted");
         // require a valid candidate
-        require(_candidateId > 0 && _candidateId <= candidatesCount, "Not valid candidate");
+        require(_candidateId > 0 && _candidateId <= candidatesCount,
+                                              "Not valid candidate");
 
-        
+
         // record that voter has voted
         voters[msg.sender] = true;
         // update candidate vote Count
