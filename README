@@ -1,0 +1,10 @@
+How to start:
+1. Start Ganashe
+2. truffle migrate
+3. truffle test
+4. truffle console
+
+
+Write in console to operate with contracts:
+web3.eth.getAccounts(function(err,res) { accounts = res; }); Election.deployed().then(function(instance) { election = instance }); Passport.deployed().then(function(instance) { passport = instance });
+
