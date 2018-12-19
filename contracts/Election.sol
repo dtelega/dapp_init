@@ -37,14 +37,16 @@ contract Election {
     function vote (uint _candidateId) public {
         // require open election
         require(electionIsOpen, "Sorry, election is closed");
-        // require that they haven't voted before
-        require(!voters[msg.sender], "Already voted");
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount,
                                               "Not valid candidate");
+        // require passport
+        require(Passport(passportAddress).userIsRegistered(msg.sender),
+                                        "Require passport information");
+        // require that they haven't voted before
+        require(!voters[msg.sender], "Already voted");
 
-
-        // record that voter has voted
+        // store that this account is vote
         voters[msg.sender] = true;
         // update candidate vote Count
         candidates[_candidateId].voteCount ++;
@@ -56,4 +58,8 @@ contract Election {
         require (electionIsOpen, "Election is already closed");
         electionIsOpen = false;
     }
+}
+
+contract Passport {
+    function userIsRegistered (address userAddress) public view returns (bool);
 }

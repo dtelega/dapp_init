@@ -24,6 +24,8 @@ contract Passport {
 													uint _age) public {
 		// require a valid user
 		require(_age >= 18, "< 18 years old");
+		// require non registered user
+		require(users[msg.sender].age == 0, "Already registered");
 
 		usersCount++;
 		users[msg.sender] = User(msg.sender, _firstName, _lastName, _age);
