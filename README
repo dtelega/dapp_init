@@ -1,6 +1,6 @@
 How to start:
 1. Start Ganashe
-2. truffle migrate
+2. truffle migrate --reset
 3. truffle test
 4. truffle console
 
