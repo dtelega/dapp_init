@@ -23,8 +23,8 @@ contract Election {
         owner = msg.sender;
         passportAddress = _passportAddress;
         electionIsOpen = true;
-        addCandidate("1st candidate");
-        addCandidate("2nd candidate");
+        addCandidate("Candidate 1");
+        addCandidate("Candidate 2");
     }
 
     function addCandidate (string _name) public {
