@@ -146,7 +146,6 @@ it("Add new user voter", function() {
       electionInstance.closeVoting({ from: accounts[0] });
       return electionInstance.vote(candidateId, { from: accounts[2] });
     }).then(assert.fail).catch(function(error) {
-      // assert(error.message.indexOf('revert') >= 0, "error message must contain revert");
       assert(error.message, "Sorry, election is closed");
     });
   });
